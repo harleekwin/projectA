@@ -14,7 +14,7 @@ namespace myapp.Controllers {
           })
         }
 
-      
+
 
         constructor(private $http: ng.IHttpService) {
             this.$http.get('/api/cars')
@@ -26,6 +26,20 @@ namespace myapp.Controllers {
                 });
         }
 
+    }
+
+    export class Dropdown {
+      disabled = false;
+      items: Array<string> = ['BMW', 'Tesla', 'Mini Cooper'];
+      status = {isopen: false};
+      toggled(open:any) {
+        console.log('Car Makes: ', open);
+      }
+      toggleDropdown ($event: MouseEvent){
+        $event.preventDefault();
+        $event.stopPropagation();
+        this.status.isopen = !this.status.isopen;
+      }
     }
 
 
