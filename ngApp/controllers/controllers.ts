@@ -14,6 +14,8 @@ namespace myapp.Controllers {
           })
         }
 
+      
+
         constructor(private $http: ng.IHttpService) {
             this.$http.get('/api/cars')
                 .then((response) => {

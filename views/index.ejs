@@ -17,9 +17,21 @@
           <a href="/about">About</a>
         </div>
         <hr />
-        
+
         <ui-view></ui-view>
   </div>
+
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="menu1"
+    data-toggle="dropdown">Car Makes
+      <span class="caret"></span>
+    </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation"><a role="menuitem" href="#">BMW</a></li>
+        <li role="presentation"><a role="menuitem" href="#">Tesla</a></li>
+        <li role="presentation"><a role="menuitem" href="#">Mini Cooper</a></li>
+      </ul>
+    </div>
 
   <script src="/bower_components/angular/angular.min.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
