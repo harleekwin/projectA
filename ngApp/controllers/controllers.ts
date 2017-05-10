@@ -1,30 +1,25 @@
 namespace myapp.Controllers {
 
-    const apiUrl = '/api/cars/search';
+    const apiUrl = '/api/cars/search/';
 
     export class HomeController {
-        public message = 'Hello from the home page!';
         public cars;
         public search;
 
-        public fetch() {
-          this.$http.get(apiUrl + this.search).then((res) => {
-            console.log(res);
-            this.cars = res.data;
-          })
-        }
-
-
-
-        constructor(private $http: ng.IHttpService) {
-            this.$http.get('/api/cars')
-                .then((response) => {
-                    this.cars = response.data;
-                })
-                .catch((response) => {
-                    console.error('Could not retrieve cars.');
+        fetch() {
+          if (this.search) {
+            console.log('searching');
+            this.$http.get(apiUrl + this.search)
+                .then((results) => {
+                  this.cars = results.data;
                 });
+          }
+
         }
+
+        constructor(private $http: ng.IHttpService) { }
+
+
 
     }
 

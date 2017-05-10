@@ -2,26 +2,20 @@ var myapp;
 (function (myapp) {
     var Controllers;
     (function (Controllers) {
-        var apiUrl = '/api/cars/search';
+        var apiUrl = '/api/cars/search/';
         var HomeController = (function () {
             function HomeController($http) {
-                var _this = this;
                 this.$http = $http;
-                this.message = 'Hello from the home page!';
-                this.$http.get('/api/cars')
-                    .then(function (response) {
-                    _this.cars = response.data;
-                })
-                    .catch(function (response) {
-                    console.error('Could not retrieve cars.');
-                });
             }
             HomeController.prototype.fetch = function () {
                 var _this = this;
-                this.$http.get(apiUrl + this.search).then(function (res) {
-                    console.log(res);
-                    _this.cars = res.data;
-                });
+                if (this.search) {
+                    console.log('searching');
+                    this.$http.get(apiUrl + this.search)
+                        .then(function (results) {
+                        _this.cars = results.data;
+                    });
+                }
             };
             return HomeController;
         }());
